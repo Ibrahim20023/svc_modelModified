@@ -86,7 +86,7 @@ def get_scaled_values(input_dict):
   
 
 def add_predictions(input_data):
-  model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "model/model.pkl"))
+  model_path = os.path.abspath(os.path.join(os.path.dirname(C:\Users\HP\Documents\ML S2\svc_modelModified\model\model.pkl)))
   
   # Load the model from the correct absolute path
   with open(model_path, "rb") as f:
