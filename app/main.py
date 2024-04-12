@@ -190,7 +190,7 @@ def main():
   
   with open("../style/style.css") as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
-  add_menu()
+    add_menu()
 
 
  
