@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 from streamlit_option_menu import option_menu
 import plotly.express as px
+import os
 
 
 def get_clean_data():
@@ -85,7 +86,12 @@ def get_scaled_values(input_dict):
   
 
 def add_predictions(input_data):
-  model = pickle.load(open("model/model.pkl", "rb"))
+  model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "model/model.pkl"))
+  
+  # Load the model from the correct absolute path
+  with open(model_path, "rb") as f:
+    model = pickle.load(f)
+  
   scaler = pickle.load(open("scaler.pkl", "rb"))
   
   input_array = np.array(list(input_data.values())).reshape(1, -1)
