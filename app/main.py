@@ -9,7 +9,7 @@ import plotly.express as px
 
 
 def get_clean_data():
-  data = pd.read_csv("../data/data.csv")
+  data = pd.read_csv("data/data.csv")
   data = data.drop(['id'], axis=1)
   
   data['diagnosis'] = data['diagnosis'].map({ 'M': 1, 'B': 0 })
@@ -85,8 +85,8 @@ def get_scaled_values(input_dict):
   
 
 def add_predictions(input_data):
-  model = pickle.load(open("../model/model.pkl", "rb"))
-  scaler = pickle.load(open("../model/scaler.pkl", "rb"))
+  model = pickle.load(open("model/model.pkl", "rb"))
+  scaler = pickle.load(open("model/scaler.pkl", "rb"))
   
   input_array = np.array(list(input_data.values())).reshape(1, -1)
   
@@ -188,7 +188,7 @@ def main():
     initial_sidebar_state="expanded"
   )
   
-  with open("../style/style.css") as f:
+  with open("style/style.css") as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
     add_menu()
 
