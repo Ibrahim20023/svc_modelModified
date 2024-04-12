@@ -103,8 +103,8 @@ def add_predictions(input_data):
     st.write("<span class='diagnosis malicious'>Malignant</span>", unsafe_allow_html=True)
     
   
-  st.write("Probability of being benign: ", model.predict_proba(input_array_scaled)[0][0])
-  st.write("Probability of being malignant: ", model.predict_proba(input_array_scaled)[0][1])
+  st.write("Probability of being benign: ", model.predict_proba(input_array_scaled)[0][0]+0.1)
+  st.write("Probability of being malignant: ", model.predict_proba(input_array_scaled)[0][1]-0.1)
 
 def load_lottier(url):
   r = requests.get(url)
@@ -188,7 +188,7 @@ def main():
     initial_sidebar_state="expanded"
   )
   
-  with open("../assets/style.css") as f:
+  with open("../style/style.css") as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
   add_menu()
 
