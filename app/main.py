@@ -86,13 +86,8 @@ def get_scaled_values(input_dict):
   
 
 def add_predictions(input_data):
-  model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "model/model.pkl"))
-  
-  # Load the model from the correct absolute path
-  with open(model_path, "rb") as f:
-    model = pickle.load(f)
-  
-  scaler = pickle.load(open("scaler.pkl", "rb"))
+  model = pickle.load(open("model/model.pkl", "rb"))
+  scaler = pickle.load(open("model/scaler.pkl", "rb"))
   
   input_array = np.array(list(input_data.values())).reshape(1, -1)
   
