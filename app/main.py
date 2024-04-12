@@ -9,7 +9,7 @@ import plotly.express as px
 
 
 def get_clean_data():
-  data = pd.read_csv("data/data.csv")
+  data = pd.read_csv("../data/data.csv")
   data = data.drop(['id'], axis=1)
   
   data['diagnosis'] = data['diagnosis'].map({ 'M': 1, 'B': 0 })
@@ -85,7 +85,7 @@ def get_scaled_values(input_dict):
   
 
 def add_predictions(input_data):
-  model = pickle.load(open("../../model/model.pkl", "rb"))
+  model = pickle.load(open("model/model.pkl", "rb"))
   scaler = pickle.load(open("scaler.pkl", "rb"))
   
   input_array = np.array(list(input_data.values())).reshape(1, -1)
@@ -153,7 +153,7 @@ def add_menu():
   if selected == "Dataset":
     st.title("The wisconsin dataset")
     st.write("The Breast Cancer Wisconsin (Diagnostic) dataset is a widely used benchmark dataset for machine learning algorithms, particularly for classification tasks. It contains data from 569 patients with breast tumors, with each tumor described by 30 numeric features that have been computed from digitized images of a fine needle aspirate (FNA) of the breast mass. These features encapsulate characteristics of the cell nuclei present in the images, including aspects such as radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry, and fractal dimension. For each of these characteristics, there are three types of measurements provided in the dataset: The mean value of the feature across the image.The standard error of the feature.The ""worst"" or largest mean value found among three largest values of the feature.The primary goal when using this dataset in machine learning is to classify each tumor as either benign (non-cancerous) or malignant (cancerous) based on these features. The 'diagnosis' is the target variable for prediction and is a binary categorical variable represented by 'M' (malignant) and 'B' (benign) in the dataset.The dataset is lauded for its clear structure, absence of missing values, and the practicality of its application to real-world diagnostic challenges. It is used for education, research, and benchmarking the performance of different machine learning algorithms. Researchers also utilize this dataset to develop and refine algorithms that can assist medical professionals in diagnosing breast cancer, thus aiming to contribute to early detection and improved patient outcomes.")
-    df = pd.read_csv('../data/data.csv')
+    df = pd.read_csv('data/data.csv')
     st.header("Filter here.")
 
     diagnosis = st.multiselect(
